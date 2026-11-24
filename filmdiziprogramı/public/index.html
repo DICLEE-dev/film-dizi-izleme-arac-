@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchParty - Birlikte İzle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Giriş Ekranı -->
+    <div id="login-screen" class="overlay">
+        <div class="login-box">
+            <h1>🎬 WatchParty</h1>
+            <p>Arkadaşlarınla aynı anda film ve dizi izle</p>
+            <input type="text" id="username-input" placeholder="Adınız (Örn: Sena)" required>
+            <input type="text" id="room-input" placeholder="Oda Kodu (Örn: filmgecesi)" required>
+            <button id="join-btn">Odaya Katıl</button>
+        </div>
+    </div>
+
+    <!-- Ana Uygulama Ekranı -->
+    <div id="app-container" class="hidden">
+        <header>
+            <div class="logo">🎬 WatchParty | Oda: <span id="display-room"></span></div>
+            <div class="url-bar">
+                <input type="text" id="video-url-input" placeholder="YouTube linki veya doğrudan .mp4 video linki yapıştırın...">
+                <button id="load-video-btn">Videoyu Yükle</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Video Alanı -->
+            <div class="video-section">
+                <video id="html5-player" controls></video>
+                <div id="youtube-player" class="hidden"></div>
+            </div>
+
+            <!-- Sohbet Alanı -->
+            <div class="chat-section">
+                <div class="chat-header">Canlı Sohbet</div>
+                <div id="chat-messages"></div>
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="Mesaj yaz..." autocomplete="off">
+                    <button type="submit">Gönder</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="client.js"></script>
+</body>
+</html>
